@@ -32,23 +32,19 @@ def run_train_test(training_file, testing_file):
     				}
     """
 
-    # 1) parse the input data into appropriate format.
+    # parse the input data into appropriate format.
     [train_features, train_targets] = parse_file(training_file)
     [test_features, test_targets] = parse_file(testing_file)
 
-    # 2) create decision trees.
+    # create decision trees.
     gini_dtc = tree.DecisionTreeClassifier(criterion='gini', random_state=0)
     entropy_dtc = tree.DecisionTreeClassifier(criterion='entropy', random_state=0)
 
-    # 3) train the decision trees.
-    gini_dtc = gini_dtc.fit(train_features, train_targets)
-    entropy_dtc = entropy_dtc.fit(train_features, train_targets)
+    # train the decision trees, run the trained decision trees on test data.
+    gini_result = gini_dtc.fit(train_features, train_targets).predict(test_features)
+    entropy_result = entropy_dtc.fit(train_features, train_targets).predict(test_features)
 
-    # 4) run the trained decision trees on test data.
-    gini_result = gini_dtc.predict(test_features)
-    entropy_result = entropy_dtc.predict(test_features)
-
-    # 5) calculate the results!
+    # calculate the confusion matrix.
     gini_fp = len([i for i in (gini_result - test_targets) if i > 0])
     gini_fn = len([i for i in (gini_result - test_targets) if i < 0])
     gini_tp = len([i for i in range(len(test_targets)) if gini_result[i] == test_targets[i] == 1])
@@ -59,7 +55,7 @@ def run_train_test(training_file, testing_file):
     entropy_tp = len([i for i in range(len(test_targets)) if entropy_result[i] == test_targets[i] == 1])
     entropy_tn = len([i for i in range(len(test_targets)) if entropy_result[i] == test_targets[i] == 0])
 
-    # 6) return the desired dictionaries.
+    # return the desired dictionaries.
     return {
             "gini":{
                 'True positives': gini_tp,
@@ -78,17 +74,27 @@ def run_train_test(training_file, testing_file):
             }
 
 def parse_file(file):
+    """
+    Input: file to be parsed.
+        Example:
+        # Budget Genre FamousActors Director GoodMovie
+        1   0      0        1          0        0
+        2   0      0        1          1        0
+        3   1      0        1          0        1
+    
+    Output: two numpy arrays containing the feautures and targets within the file.
+        Example:
+
+        return [    [[0 0 1 0]  , [0 0 1]    ]
+                     [0 0 1 1]
+                     [1 0 1 0]]
+    """
     with file:
         data = [[y for y in x.strip().split(" ")] for x in file][1:]
         data = [[int(x) for x in y] for y in data]
         features = [[data[j][i] for i in range(1, len(data[0]) - 1)] for j in range(len(data))]
         targets = [data[j][-1] for j in range(len(data))]
         return [np.array(features), np.array(targets)]
-
-
-#######
-# The following functions are provided for you to test your classifier.
-#######
 
 if __name__ == "__main__":
     import sys
