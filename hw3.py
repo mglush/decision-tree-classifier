@@ -36,17 +36,19 @@ def run_train_test(training_file, testing_file):
     [train_features, train_targets] = parse_file(training_file)
     [test_features, test_targets] = parse_file(testing_file)
 
-    # 2) train the decision tree classifiers for gini and entropy.
+    # 2) create decision trees.
     gini_dtc = tree.DecisionTreeClassifier(criterion='gini', random_state=0)
-    gini_dtc = gini_dtc.fit(train_features, train_targets)
     entropy_dtc = tree.DecisionTreeClassifier(criterion='entropy', random_state=0)
+
+    # 3) train the decision trees.
+    gini_dtc = gini_dtc.fit(train_features, train_targets)
     entropy_dtc = entropy_dtc.fit(train_features, train_targets)
 
-    # 3) run the trained decision tree on test data.
+    # 4) run the trained decision trees on test data.
     gini_result = gini_dtc.predict(test_features)
     entropy_result = entropy_dtc.predict(test_features)
 
-    # 4) calculate the results!
+    # 5) calculate the results!
     gini_fp = len([i for i in (gini_result - test_targets) if i > 0])
     gini_fn = len([i for i in (gini_result - test_targets) if i < 0])
     gini_tp = len([i for i in range(len(test_targets)) if gini_result[i] == test_targets[i] == 1])
@@ -57,7 +59,7 @@ def run_train_test(training_file, testing_file):
     entropy_tp = len([i for i in range(len(test_targets)) if entropy_result[i] == test_targets[i] == 1])
     entropy_tn = len([i for i in range(len(test_targets)) if entropy_result[i] == test_targets[i] == 0])
 
-    # 5) return the desired dictionaries.
+    # 6) return the desired dictionaries.
     return {
             "gini":{
                 'True positives': gini_tp,
