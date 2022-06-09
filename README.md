@@ -11,7 +11,7 @@
 
 ## How to Run
 ~~~
-git clone https://github.com/mglush/decision-tree-classifier    # clone repository.
+git clone git@github.com:mglush/decision-tree-classifier.git    # clone repository.
 cd decision-tree-classifier                                     # enter repo folder.
 python hw3.py training_filename testing_filename                # run file on a training/testing file input pair.
 ~~~
