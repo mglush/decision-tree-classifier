@@ -24,16 +24,16 @@ Two text files, one containing the training data, one containing the testing dat
 Two dictionaries, both containing the number of true positives, true negatives, false positives, false negatives, and the error rate of the classifier for the given test data. First dictionary uses results from the gini criterion being used in the decision tree, second dictionary uses results from the entropy criterion being used in the decision tree.\
 Example:\
 "gini":{\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"tpr": _____,\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fpr": _____,\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"error_rate": _____,\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"accuracy": _____,\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"precision": _____,\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"True positives": _____,\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"True negatives": _____,\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"False positives": _____,\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"False negatives": _____,\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Error rate": _____,\
 }\
 "entropy":{\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"tpr": _____,\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fpr": _____,\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"error_rate": _____,\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"accuracy": _____,\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"precision": _____,\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"True positives": _____,\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"True negatives": _____,\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"False positives": _____,\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"False negatives": _____,\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Error rate": _____,\
 }
