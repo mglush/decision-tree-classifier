@@ -21,7 +21,7 @@ python hw3.py training_filename testing_filename                # run file on a 
 Two text files, one containing the training data, one containing the testing data. Check data/training*.txt for format examples.
 
 **Output**:\
-Two dictionaries, both containing the true positive rate,  false positive rate, error rate, accuracy, and precision of the classifier for the given test data. First dictionary uses results from the gini criterion being used in the decision tree, second dictionary uses results from the entropy criterion being used in the decision tree.\
+Two dictionaries, both containing the number of true positives, true negatives, false positives, false negatives, and the error rate of the classifier for the given test data. First dictionary uses results from the gini criterion being used in the decision tree, second dictionary uses results from the entropy criterion being used in the decision tree.\
 Example:\
 "gini":{\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"tpr": _____,\
