@@ -102,7 +102,7 @@ if __name__ == "__main__":
     training_file = open(sys.argv[1], "r")
     testing_file = open(sys.argv[2], "r")
 
-    run_train_test(training_file, testing_file)
+    print(run_train_test(training_file, testing_file))
 
     training_file.close()
     testing_file.close()
